@@ -108,7 +108,7 @@
     .msg.ok { color: #7ffc9e; }
     .msg.error { color: #fc7f7f; }
 
-    /* Honeypot: invisible para humanos */
+    
     .hp { display: none; }
 
     footer { text-align: center; padding: 2rem; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
@@ -176,7 +176,7 @@
       <a href="https://github.com/Gianfranco499" target="_blank">GitHub</a>
     </div>
     <form id="form">
-      <!-- Honeypot: los bots lo llenan, los humanos no lo ven -->
+      
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
       <input type="text" name="nombre" placeholder="Tu nombre" required>
       <input type="email" name="email" placeholder="Tu email" required>
@@ -195,16 +195,16 @@
     const btn = document.getElementById('btn');
     const msg = document.getElementById('msg');
 
-    // Rate limit: guarda el timestamp del último envío en el navegador
+    
     const LIMITE_MS = 60000; // 1 minuto entre envíos
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // Honeypot: si el campo oculto tiene algo, es un bot
+      
       if (form._gotcha.value) return;
 
-      // Rate limit
+      
       const ultimo = localStorage.getItem('ultimo_envio');
       if (ultimo && Date.now() - parseInt(ultimo) < LIMITE_MS) {
         msg.textContent = 'Espera un momento antes de enviar otro mensaje.';
